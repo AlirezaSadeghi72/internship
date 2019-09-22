@@ -305,7 +305,8 @@ namespace WindowsFormsApp1.Forms
 
         private void btn_TopLastCustomer_Click(object sender, EventArgs e)
         {
-
+            Form topCustomer = new frm_ShowCustomers();
+            topCustomer.ShowDialog();
         }
     }
 }
