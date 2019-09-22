@@ -23,7 +23,7 @@ namespace WindowsFormsApp1.DataLayer
 
 
         public IEnumerable<T> get(Expression<Func<T, bool>> where = null,
-            Expression<Func<T, object>> orderBy = null
+            Expression<Func<T, int>> orderBy = null
              , bool firstOrLirst = true, int? top = null)
         {
             IQueryable<T> result = _dbSet;
