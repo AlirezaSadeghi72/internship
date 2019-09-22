@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.DataLayer
         }
         
 
-        public IEnumerable<T> get(Expression<Func<T, bool>> where = null)
+        public IEnumerable<T> get(Expression<Func<T, bool>> where = null, bool firstOrLirst = true, int? top = null , Expression<Func<T,object>> ali = null)
         {
             IQueryable<T> result = _dbSet;
             if (where != null)
@@ -37,15 +37,6 @@ namespace WindowsFormsApp1.DataLayer
                 return _dbSet.Max(max);
         }
 
-        public IEnumerable<T> get(Expression<Func<T, bool>> where = null , bool firstOrLirst = true,int? top = null)
-        {
-            IQueryable<T> result = _dbSet;
-            if (where != null)
-                result= result.Where(where);
-            //result = result.OrderBy()
-
-            return result.ToList();
-        }
         public void insert(T Tentity)
                 {
                     _dbSet.Add(Tentity);
