@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9a9829d6edd4816bfa92db6df622df9" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="Atiran2Model.cust_act" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atiran2Model.CUSTOMERS" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atiran2Model.sys_cus" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Atiran2Model.TellBook" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Atiran2Model.FK_cust_act_CUSTOMERS" ManuallyRouted="false" />
+        <AssociationConnector Association="Atiran2Model.FK_sys_cus_CUSTOMERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Atiran2Model.visitors" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Atiran2Model.custgroup" Width="1.5" PointX="0.75" PointY="14.5" />
+        <AssociationConnector Association="Atiran2Model.FK_custgroup_custgroup" />
+        <AssociationConnector Association="Atiran2Model.FK_CUSTOMERS_custgroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
