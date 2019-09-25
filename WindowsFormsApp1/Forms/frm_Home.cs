@@ -22,5 +22,11 @@ namespace WindowsFormsApp1.Forms
             Form new_customer = new frm_Customer();
             new_customer.ShowDialog();
         }
+
+        private void tsmi_NewVisitor_Click(object sender, EventArgs e)
+        {
+            Form new_visitor = new frm_Visitor();
+            new_visitor.ShowDialog();
+        }
     }
 }

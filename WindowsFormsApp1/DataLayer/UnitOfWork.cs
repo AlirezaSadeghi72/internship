@@ -16,7 +16,17 @@ namespace WindowsFormsApp1.DataLayer
        {
            db = new dbEntities();
        }
+       private GenericRepository<cust_act> _grCus_act;
 
+       public GenericRepository<cust_act> grCus_act
+       {
+           get
+           {
+               if (_grCus_act == null)
+                   _grCus_act = new GenericRepository<cust_act>(db);
+               return _grCus_act;
+           }
+       }
         private GenericRepository<CUSTOMERS> _grCustomer;
 
         public GenericRepository<CUSTOMERS> grCustomer

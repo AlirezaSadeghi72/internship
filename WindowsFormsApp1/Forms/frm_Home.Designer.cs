@@ -67,6 +67,7 @@
             this.tsmi_NewVisitor.Name = "tsmi_NewVisitor";
             this.tsmi_NewVisitor.Size = new System.Drawing.Size(214, 22);
             this.tsmi_NewVisitor.Text = "تعریف ویزیتور/پرسنل فروش";
+            this.tsmi_NewVisitor.Click += new System.EventHandler(this.tsmi_NewVisitor_Click);
             // 
             // frm_Home
             // 

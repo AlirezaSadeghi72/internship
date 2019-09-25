@@ -21,19 +21,18 @@ namespace WindowsFormsApp1.Forms
         private int ID = 1;
         private void frm_Customer_Load(object sender, EventArgs e)
         {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                ID += db.grCustomer.getMaxID(c => c.SHMO) ?? 0;
-                cbox_AccountSide.DataSource =
-                    db.grCustgroup.get();
-                cbox_AccountSide.ValueMember = "group_rdf";
-                cbox_AccountSide.DisplayMember = "group_name";
-                cbox_Visitor.DataSource = db.grVisitor.get();
-                cbox_Visitor.ValueMember = "vis_rdf";
-                cbox_Visitor.DisplayMember = "vis_name";
-                countcust = db.grCustomer.get(c => c.code.StartsWith("001029042")).Count();
 
-            }
+            ID += conection.getMaxID(c => c.SHMO);
+            cbox_AccountSide.DataSource =
+                conection.get<custgroup>();
+            cbox_AccountSide.ValueMember = "group_rdf";
+            cbox_AccountSide.DisplayMember = "group_name";
+            cbox_Visitor.DataSource = conection.get<visitors>();
+            cbox_Visitor.ValueMember = "vis_rdf";
+            cbox_Visitor.DisplayMember = "vis_name";
+            countcust = conection.get<CUSTOMERS>(c => c.code.StartsWith("001029042")).Count();
+
+
             countcust++;
             if (countcust < 10)
                 txt_CustCod.Text += "00";
@@ -83,7 +82,7 @@ namespace WindowsFormsApp1.Forms
                 bankshobe = "",
                 peygham1 = ""
             };
-            
+
             return cust;
 
             //cust.code = txt_CustCod.Text;
@@ -113,7 +112,7 @@ namespace WindowsFormsApp1.Forms
             //    cust.cred = 0;
             //else
             //    cust.cred = Convert.ToDecimal(txt_Credibility.Text);
-        
+
             //if (chbox_InvoiceToInvoice.Checked)
             //{
             //    cust.just_naghdi = 1;
@@ -127,7 +126,7 @@ namespace WindowsFormsApp1.Forms
             //    else
             //        cust.MaxManFactor = int.Parse(txt_MaxMinFactor.Text);
             //}
-           
+
             //cust.check_eteb = chbox_CheckCredit.Checked ? 1 : 0;
             //cust.sharh = rtxt_Description.Text;
 
@@ -164,12 +163,7 @@ namespace WindowsFormsApp1.Forms
             {
                 CUSTOMERS customer = ReturnCustInfo();
 
-
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    db.grCustomer.insert(customer);
-                    db.Saveing();
-                }
+                conection.insert<CUSTOMERS>(customer);
 
                 ResultMessage();
             }
@@ -222,12 +216,9 @@ namespace WindowsFormsApp1.Forms
             else
             {
                 CUSTOMERS customer = ReturnCustInfo();
-                using (UnitOfWork db = new UnitOfWork())
-                {
-                    db.insertEntitySP(customer.code, customer.special, customer.MONAME, customer.group_rdf,
+                conection.insertEntitySP(customer.code, customer.special, customer.MONAME, customer.group_rdf,
                         customer.vis_rdf, customer.addre, customer.tell1, customer.cred, customer.check_eteb,
                         customer.just_naghdi, customer.MaxManFactor, customer.sharh);
-                }
 
                 ResultMessage();
             }
@@ -241,12 +232,10 @@ namespace WindowsFormsApp1.Forms
 
         private void restform()
         {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                ID = db.grCustomer.getMaxID(c => c.SHMO) ?? 0;
-                countcust = db.grCustomer.get(c => c.code.StartsWith("001029042")).Count();
 
-            }
+            ID = conection.getMaxID(c => c.SHMO);
+            countcust = conection.get<CUSTOMERS>(c => c.code.StartsWith("001029042")).Count();
+
 
             txt_CustNumber.Text = (ID++).ToString();
 
